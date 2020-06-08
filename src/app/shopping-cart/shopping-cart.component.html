@@ -1,28 +1,5 @@
-<div class="cartProduct-item">
-    <div>
-        <img src="https://avatars0.githubusercontent.com/u/46405934?s=400&v=4" alt="product"/>
-    </div>
-    <div>
-        <p>Product Name</p>
-        <p>ImmutableJS</p>
-    </div>
-    <div>
-        <p>Short Description</p>
-        <p>Immutable data cannot be changed once created, leading to much simpler application development, no defensive copying, and enabling advanced memoization and change detection techniques with simple logic. Persistent data presents a mutative API which does not update the data in-place, but instead always yields new updated data.</p>
-    </div>
-    <div>
-        <p>Qty</p>
-        <p>1</p>
-    </div>
-    <div>
-        <p>Price per 1pc</p>
-        <p>184.88</p>
-    </div>
-    <div>
-        <p>Line Total</p>
-        <p>184.88</p>
-    </div>
-    <div>
-        <button type="button">Remove item</button>
+<div class="cart-items-container">
+    <div *ngFor="let cartItem of cartItems">
+        <cart-item [cartItem]="cartItem"></cart-item>
     </div>
 </div>
