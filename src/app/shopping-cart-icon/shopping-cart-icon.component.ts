@@ -7,22 +7,14 @@ import {ProductService} from '../services/product.service';
   styleUrls: ['./shopping-cart-icon.component.css']
 })
 export class ShoppingCartIconComponent implements OnInit {
-  // public num: Number = 0;
+  
   public count: number
 
   constructor(private productsService: ProductService) { }
 
   ngOnInit() {
-    // let lenght = this.productsService.getCartProductsAll().length
-    // console.log('ShoppingCartIconComponent - ngOnInit - num: ', lenght)
-    // this.num = lenght
+    // sync localStorage cartItems
+    this.productsService.getCartItemsAll()
     this.productsService.currentCount.subscribe((count: number) => this.count = count)
   }
-
-  // get count () {
-  //   return this.productsService.getCartProductsAll().length
-  // }
-  // ngDoCheck() {
-
-  // }
 }

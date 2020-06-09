@@ -32,6 +32,11 @@ export class ProductService {
       );
   }
   getCartItemsAll(): CartItem[] {
+    // products from localStorage
+    if (localStorage.getItem('cartItems')) {
+      this.cartItems = JSON.parse(localStorage.getItem('cartItems'));
+    }
+    this.updateObservable()
     return this.cartItems
   }
   addCartItem(product: Product): CartItem {
@@ -77,6 +82,7 @@ export class ProductService {
   updateObservable() {
     this.updateCount()
     this.updateTotalAmount()
+    this.saveCartItems()
   }
   
   updateCount() {
@@ -90,6 +96,9 @@ export class ProductService {
       totalAmount += ci.total
     })
     this.totalAmountSource.next(totalAmount)
+  }
+  saveCartItems() {
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems))
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
