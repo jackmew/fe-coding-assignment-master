@@ -14,8 +14,18 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productsService.getProducts().subscribe(products => this.products = products);
+    // products from localStorage
+    let localProducts = []
+    if (localStorage.getItem('products')) {
+      localProducts = JSON.parse(localStorage.getItem('products'));
+    }
+    if (localProducts.length !== 0) {
+      console.log('products localStorage', localProducts)
+      this.products = localProducts
+      
+    // products from server  
+    } else {
+      this.productsService.getProducts().subscribe(products => this.products = products);
+    }
   }
-
-
 }

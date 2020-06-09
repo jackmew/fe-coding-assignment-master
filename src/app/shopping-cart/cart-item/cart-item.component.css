@@ -1,0 +1,113 @@
+.cart-item {        
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+    margin-bottom: 20px;
+
+    background-color: #ffffff;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+    transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+/* .cart-item:hover {   
+    background-color:lightcyan;
+} */
+.cart-item * {
+    -webkit-transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+    transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+.cart-item:hover img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.cart-item > div {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    margin: 5px 10px 5px 10px;
+}
+.cart-item > div > p {
+    width: 100%;
+}
+/* image  */
+.cart-item > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart-item > div > img {
+    width: 200px;
+}
+/* description */
+.cart-item > div:nth-child(3) > p:nth-child(2) {
+    display: -webkit-box;   
+    -webkit-line-clamp: 3;   
+    -webkit-box-orient: vertical;   
+    overflow: hidden; 
+}
+/* button */
+.cart-item > div:nth-child(7) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button {
+    background-color:  #2472a4;
+    border: none;
+    color: white;
+    width: 110px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    opacity: 0.8;
+}
+button:hover {
+    opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-item {
+        display: flex;
+        flex-direction: row;
+    }
+    .cart-item > div {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin: 5px 10px 5px 10px;
+    }
+    /* .cart-item > div > p {
+        width: 0;
+    } */
+    /* image  */
+    .cart-item > div:nth-child(1) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cart-item > div > img {
+        width: 120px;
+    }
+    /* description */
+    .cart-item > div:nth-child(3) {
+        flex: 3;
+    }
+    .cart-item > div:nth-child(3) > p:nth-child(2) {
+        display: -webkit-box;   
+        -webkit-line-clamp: 3;   
+        -webkit-box-orient: vertical;   
+        overflow: hidden; 
+    }
+    /* button */
+    .cart-item > div:nth-child(7) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

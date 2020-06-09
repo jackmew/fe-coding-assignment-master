@@ -1,1 +1,14 @@
-<p>TODO - implement shopping cart</p>
+<div class="cart-items-container">
+    <div *ngFor="let cartItem of cartItems">
+        <cart-item [cartItem]="cartItem"></cart-item>
+    </div>
+    <div *ngIf="totalAmount !== 0" class="cart-items-total-container">
+        <div>
+            <p>Total amount for payment:</p>
+            <p>{{totalAmount.toFixed(2) + '$'}}</p>
+        </div>
+    </div>
+    <div *ngIf="totalAmount === 0" class="cart-items-empty">
+        <p>Shopping cart is empty</p>
+    </div>
+</div>

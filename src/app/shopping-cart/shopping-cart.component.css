@@ -1,0 +1,31 @@
+P {
+    font-size: 1.2em;
+}
+.cart-items-container {
+    margin: 20px;
+}
+.cart-items-total-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-items-total-container > div > p:nth-child(1) {
+    text-decoration: underline;
+}
+.cart-items-empty {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-items-container {
+        margin: 20px 50px 50px 50px;
+    }
+    .cart-items-total-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+    
