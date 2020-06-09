@@ -1,0 +1,24 @@
+.cart-items-container {
+    margin: 10px;
+}
+.cart-items-total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-items-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-items-container {
+        margin: 50px;
+    }
+    .cart-items-total {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+    

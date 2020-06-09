@@ -8,7 +8,7 @@ import {ProductService} from '../services/product.service';
 })
 export class ShoppingCartIconComponent implements OnInit {
   // public num: Number = 0;
-  public count: Number
+  public count: number
 
   constructor(private productsService: ProductService) { }
 
@@ -16,7 +16,7 @@ export class ShoppingCartIconComponent implements OnInit {
     // let lenght = this.productsService.getCartProductsAll().length
     // console.log('ShoppingCartIconComponent - ngOnInit - num: ', lenght)
     // this.num = lenght
-    this.productsService.currentCount.subscribe((count: Number) => this.count = count)
+    this.productsService.currentCount.subscribe((count: number) => this.count = count)
   }
 
   // get count () {

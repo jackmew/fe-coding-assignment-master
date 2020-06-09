@@ -18,6 +18,6 @@ export class ProductComponent {
     // TODO - implement adding of product to cart
     console.log('addToCart')
     // console.log(this.product)
-    this.productsService.addCartProduct(this.product)
+    this.productsService.addCartItem(this.product)
   }
 }

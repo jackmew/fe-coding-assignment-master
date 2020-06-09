@@ -12,17 +12,17 @@
     </div>
     <div>
         <p>Qty</p>
-        <p>1</p>
+        <p>{{cartItem.quantity}}</p>
     </div>
     <div>
         <p>Price per 1pc</p>
-        <p>{{cartItem.price}}</p>
+        <p>{{cartItem.price + '$'}}</p>
     </div>
     <div>
         <p>Line Total</p>
-        <p>184.88</p>
+        <p>{{cartItem.total.toFixed(2) + '$'}}</p>
     </div>
     <div>
-        <button type="button">Remove item</button>
+        <button (click)="removeCartItem()" type="button">Remove item</button>
     </div>
 </div>

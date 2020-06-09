@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
+import {CartItem} from '../models/cartItem';
 import {HttpClient} from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 
@@ -8,9 +9,13 @@ import {Observable, BehaviorSubject} from 'rxjs';
 })
 export class ProductService {
 
-  public cartProducts: Product[] = []
+  public cartItems: CartItem[] = []
+
   private countSource = new BehaviorSubject(0)
   public currentCount = this.countSource.asObservable()
+
+  private totalAmountSource = new BehaviorSubject(0)
+  public currentTotalAmount = this.totalAmountSource.asObservable()
 
   constructor(private http: HttpClient) {
   }
@@ -19,22 +24,64 @@ export class ProductService {
     return this.http.get<Product[]>('http://www.mocky.io/v2/5cc95d2b310000db0c12ccb1');
   }
 
-  getCartProductsAll(): Product[] {
-    return this.cartProducts
+  getCartItemsAll(): CartItem[] {
+    return this.cartItems
   }
-  addCartProduct(product: Product): Product {
-    this.cartProducts.push(product)
-    console.log('addCartProduct')
-    console.log(this.cartProducts)
+  addCartItem(product: Product): CartItem {
 
+    let oldCartItem = this.cartItems.find(cartItem => cartItem.id === product.id)
+
+    if (oldCartItem) {
+      let quantity = oldCartItem.quantity + 1
+      let price = oldCartItem.price
+      let total = quantity * price
+      oldCartItem.quantity = quantity
+      oldCartItem.total = total
+
+      this.updateObservable()
+      return oldCartItem
+    } else {
+      
+      let newCartItem: CartItem = {
+        id: product.id,   
+        name: product.name,
+        imgUrl: product.imgUrl,
+        description: product.description,
+        price: product.price,
+        quantity: 1,
+        total: product.price
+      }
+      this.cartItems.push(newCartItem)
+      this.updateObservable()
+      return newCartItem
+    }
+  }
+  removeCartItem(cartItem: CartItem): void {
+    let oldCartItem = this.cartItems.find(ci => ci.id === cartItem.id)
+    if (oldCartItem.quantity === 1) {
+      let index = this.cartItems.findIndex(ci => ci.id === cartItem.id)
+      this.cartItems.splice(index, 1)
+    } else {
+      oldCartItem.quantity = oldCartItem.quantity - 1
+      oldCartItem.total = oldCartItem.quantity * oldCartItem.price
+    }
+    this.updateObservable()
+  }
+  updateObservable() {
     this.updateCount()
-    return product
+    this.updateTotalAmount()
   }
   
   updateCount() {
-    this.countSource.next(this.cartProducts.length)
+    let count = 0
+    this.cartItems.forEach(cartItem => count+=cartItem.quantity)
+    this.countSource.next(count)
   }
-  // deleteShoppingProductByName(name) {
-
-  // }
+  updateTotalAmount() {
+    let totalAmount = 0 
+    this.cartItems.forEach(ci => {
+      totalAmount += ci.total
+    })
+    this.totalAmountSource.next(totalAmount)
+  }
 }
