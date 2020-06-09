@@ -1,11 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-  --lh: 1.4rem;
-  line-height: var(--lh);
-}
 body {
   background-color: papayawhip;
   margin: 0;
-
-  font: 1.2em/1.2em 'Open Sans', sans-serif;
 }
