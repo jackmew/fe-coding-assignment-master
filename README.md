@@ -37,6 +37,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Done
 
 ### Desktop - /screenshots/desktop
+<img src="./screenshots/desktop/desktop1.png" alt="desktop1" height="250"/>  
+<img src="./screenshots/desktop/desktop2.png" alt="desktop2" height="250"/>
 
 ### Mobile - /screenshots/mobile
-
+<img src="./screenshots/mobile/mobile1.png" alt="mobile1" width="200"/>  
+<img src="./screenshots/mobile/mobile2.png" alt="mobile2" width="200"/>

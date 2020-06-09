@@ -69,14 +69,19 @@ export class ProductService {
     }
   }
   removeCartItem(cartItem: CartItem): void {
-    let oldCartItem = this.cartItems.find(ci => ci.id === cartItem.id)
-    if (oldCartItem.quantity === 1) {
-      let index = this.cartItems.findIndex(ci => ci.id === cartItem.id)
-      this.cartItems.splice(index, 1)
-    } else {
-      oldCartItem.quantity = oldCartItem.quantity - 1
-      oldCartItem.total = oldCartItem.quantity * oldCartItem.price
-    }
+    // remove whole product
+    let index = this.cartItems.findIndex(ci => ci.id === cartItem.id)
+    this.cartItems.splice(index, 1)
+
+    // delete 1 quantity of cartItem
+    // let oldCartItem = this.cartItems.find(ci => ci.id === cartItem.id)
+    // if (oldCartItem.quantity === 1) {
+    //   let index = this.cartItems.findIndex(ci => ci.id === cartItem.id)
+    //   this.cartItems.splice(index, 1)
+    // } else {
+    //   oldCartItem.quantity = oldCartItem.quantity - 1
+    //   oldCartItem.total = oldCartItem.quantity * oldCartItem.price
+    // }
     this.updateObservable()
   }
   updateObservable() {
